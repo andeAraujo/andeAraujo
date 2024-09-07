@@ -1,6 +1,6 @@
 - 🗣️ I speak English and Portuguese
 - 🖥️ I'm a System Analysis and Development student
-- 🌱 I’m currently learning web development
+- 🌱 Currently learning web development
 
 <!---
 andeAraujo/andeAraujo is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
