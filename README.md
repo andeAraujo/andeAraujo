@@ -40,8 +40,12 @@
 ---
 
 ### 🐍 The Contribution Forest
-<!-- This turns your "stats" into a fun snake game animation -->
-![snake animation](https://github.com/andeAraujo/andeAraujo/blob/output/github-contribution-grid-snake2.svg)
+### My Contribution Snake
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/andeAraujo/andeAraujo/output/github-snake-dark.gif">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/andeAraujo/andeAraujo/output/github-snake.gif">
+  <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/andeAraujo/andeAraujo/output/github-snake.gif">
+</picture>
 
 ---
 

@@ -1,35 +1,39 @@
-name: Generate snake game
-
-# Give the workflow permission to push to the repository, which is necessary for updating the SVG file and deploying to GitHub Pages.
-permissions:
-  contents: write
+name: Generate Snake
 
 on:
-  schedule: # execute every 12 hours
-    - cron: "0 */12 * * *"
+  # Run automatically every 24 hours
+  schedule:
+    - cron: "0 0 * * *" 
+  
+  # Allows to manually run the job at any time
   workflow_dispatch:
+  
+  # Run on every push on the main branch
+  push:
+    branches:
+    - main
 
 jobs:
-  build:
-    name: Jobs to update datas
+  generate:
+    permissions: 
+      contents: write
     runs-on: ubuntu-latest
+    timeout-minutes: 5
+    
     steps:
-      # Checkout the repo so the action can work with it
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      # Snake Animation
-      - name: Generate snake SVG
-        uses: Sutil/snk@master
-        id: snake-gif
+      # Generates a snake game from a github user contributions graph, output a svg animation at <svg_out_path>
+      - name: generate github-contribution-grid-snake.gif
+        uses: Platane/snk@v3
         with:
           github_user_name: ${{ github.repository_owner }}
-          svg_out_path: dist/github-contribution-grid-snake2.svg
-          snake_color: 'blue'
+          outputs: |
+            dist/github-snake.gif
+            dist/github-snake-dark.gif?palette=github-dark
 
-      # Deploy to output branch
-      - name: Deploy to GitHub Pages (output branch)
-        uses: crazy-max/ghaction-github-pages@v3
+      # Push the content of <build_dir> to a branch
+      # The content will be available at https://raw.githubusercontent.com/andeAraujo/<repository>/<target_branch>/<file>
+      - name: push github-contribution-grid-snake.gif to the output branch
+        uses: crazy-max/ghaction-github-pages@v3.1.0
         with:
           target_branch: output
           build_dir: dist
